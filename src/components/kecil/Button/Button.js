@@ -2,8 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconCart} from '../../../assets/icons/icons';
 import {colors} from '../../../util';
+import TextOnly from './TextOnly';
 
-const Button = ({icon, totalkeranjang, padding}) => {
+const Button = props => {
+  const {icon, totalkeranjang, padding, type} = props;
   console.log('Padding', padding);
   const Icon = () => {
     if (icon === 'keranjang') {
@@ -11,6 +13,9 @@ const Button = ({icon, totalkeranjang, padding}) => {
     }
     return <IconCart />;
   };
+  if (type === 'text') {
+    return <TextOnly {...props} />;
+  }
   return (
     <TouchableOpacity style={styles.container(padding)}>
       <Icon />

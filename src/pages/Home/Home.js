@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
-import {BannerSlider, HeaderComponent, ListLiga} from '../../components';
-import ListJersey from '../../components/besar/ListJersey/ListJersey';
+import {
+  BannerSlider,
+  HeaderComponent,
+  ListLiga,
+  ListJerseys,
+} from '../../components';
+import Button from '../../components/kecil/Button/Button';
+import Jarak from '../../components/kecil/Jarak/Jarak';
 import {dummyLigas} from '../../Data';
 import {dummyJerseys} from '../../Data/DummyJersey/DummyJersey';
 import {colors, fonts} from '../../util';
@@ -17,7 +23,7 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.page}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <HeaderComponent />
           <BannerSlider />
           <View style={styles.pilihLiga}>
@@ -28,8 +34,10 @@ export default class Home extends Component {
             <Text style={styles.label}>
               Pilih <Text style={styles.bolds}>Jersey</Text> Yang anda Inginkan
             </Text>
-            <ListJersey jerseys={this.state.jerseys} />
+            <ListJerseys jerseys={this.state.jerseys} />
+            <Button title="Lihat Semua" type="text" padding={10} />
           </View>
+          <Jarak height={15} />
         </ScrollView>
       </View>
     );

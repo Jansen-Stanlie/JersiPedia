@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import CardJersey from '../../kecil/CardJersey/CardJersey';
 
-const ListJersey = ({jerseys}) => {
+const ListJerseys = ({jerseys}) => {
   return (
     <View style={styles.container}>
       {jerseys.map(jersey => {
@@ -12,12 +12,13 @@ const ListJersey = ({jerseys}) => {
   );
 };
 
-export default ListJersey;
+export default ListJerseys;
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    marginTop: 10,
   },
 });
