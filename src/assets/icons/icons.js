@@ -6,6 +6,11 @@ import IconProfileAktif from './profile-active.svg';
 import IconProfile from './profile.svg';
 import IconSeacrh from './search.svg';
 import IconCart from './cart.svg';
+import IconArrowRight from './arrow.svg';
+import IconChangePassword from './profileP.svg';
+import IconEditPassword from './lock.svg';
+import IconSignOut from './Sign-out.svg';
+import IconHistory from './jerseyP.svg';
 
 export {
   IconHome,
@@ -16,4 +21,9 @@ export {
   IconProfileAktif,
   IconCart,
   IconSeacrh,
+  IconArrowRight,
+  IconChangePassword,
+  IconEditPassword,
+  IconHistory,
+  IconSignOut,
 };

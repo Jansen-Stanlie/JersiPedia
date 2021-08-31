@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {IconCart} from '../../../assets/icons/icons';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {colors, fonts} from '../../../util';
 
 const TextOnly = ({padding, title}) => {

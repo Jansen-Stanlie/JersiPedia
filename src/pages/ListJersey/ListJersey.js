@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
-import {
-  BannerSlider,
-  HeaderComponent,
-  ListLiga,
-  ListJerseys,
-} from '../../components';
-import Button from '../../components/kecil/Button/Button';
-import Jarak from '../../components/kecil/Jarak/Jarak';
+import {HeaderComponent, ListLiga, ListJerseys} from '../../components';
 import {dummyLigas} from '../../Data';
 import {dummyJerseys} from '../../Data/DummyJersey/DummyJersey';
 import {colors, fonts} from '../../util';
