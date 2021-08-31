@@ -7,3 +7,6 @@ export const responsiveWidth = width => {
 export const responsiveHeight = height => {
   return (Dimensions.get('window').height * height) / heightMobileUII;
 };
+export const numberWithCommas = x => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

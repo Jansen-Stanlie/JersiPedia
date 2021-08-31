@@ -15,10 +15,10 @@ import {
   MilanDepan,
   MunchenBelakang,
   MunchenDepan,
-  Bundesliga,
   LaLiga,
   PremierLeague,
   SerieA,
+  BundesLiga,
 } from '../../assets';
 
 export const dummyJerseys = [
@@ -44,7 +44,7 @@ export const dummyJerseys = [
     liga: {
       id: 4,
       nama: 'Bundesliga',
-      gambar: Bundesliga,
+      gambar: BundesLiga,
     },
     harga: 125000,
     berat: 0.25,
@@ -134,7 +134,7 @@ export const dummyJerseys = [
     liga: {
       id: 4,
       nama: 'Bundesliga',
-      gambar: Bundesliga,
+      gambar: BundesLiga,
     },
     harga: 125000,
     berat: 0.25,
