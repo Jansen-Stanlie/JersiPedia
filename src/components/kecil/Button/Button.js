@@ -1,20 +1,20 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {IconCart} from '../../../assets/icons/icons';
+import {IconBack, IconCart} from '../../../assets/icons/icons';
 import {colors} from '../../../util';
 import TextOnly from './TextOnly';
 
 const Button = props => {
-  const {icon, totalkeranjang, padding, type} = props;
+  const {icon, totalkeranjang, padding, type, onPress} = props;
   console.log('Padding', padding);
   const Icon = () => {
     if (icon === 'keranjang') {
       return <IconCart />;
     }
-    return <IconCart />;
+    return <IconBack />;
   };
   if (type === 'text') {
-    return <TextOnly {...props} />;
+    return <TextOnly {...props} onPress={onPress} />;
   }
   return (
     <TouchableOpacity style={styles.container(padding)}>

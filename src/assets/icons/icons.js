@@ -11,6 +11,8 @@ import IconChangePassword from './profileP.svg';
 import IconEditPassword from './lock.svg';
 import IconSignOut from './Sign-out.svg';
 import IconHistory from './jerseyP.svg';
+import IconBack from './arrow-left.svg';
+import IconKeranjangPutih from './cart-putih.svg';
 
 export {
   IconHome,
@@ -26,4 +28,6 @@ export {
   IconEditPassword,
   IconHistory,
   IconSignOut,
+  IconBack,
+  IconKeranjangPutih,
 };

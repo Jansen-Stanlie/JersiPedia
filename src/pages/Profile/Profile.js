@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {dummyProfile} from '../../Data/DummyProfile/DummyProfile';
+import {ListMenu} from '../../components/besar/index';
+import {dummyMenu, DummyMenu, dummyProfile} from '../../Data';
 import {colors, fonts, responsiveHeight, responsiveWidth} from '../../util';
 import {heightMobileUII} from '../../util/constant/constant';
 
@@ -11,10 +12,11 @@ export default class Profile extends Component {
 
     this.state = {
       profile: dummyProfile,
+      menus: dummyMenu,
     };
   }
   render() {
-    const {profile} = this.state;
+    const {profile, menus} = this.state;
     return (
       <View style={styles.page}>
         <View style={styles.container}>
@@ -26,6 +28,7 @@ export default class Profile extends Component {
               {profile.alamat}, {profile.kota}
             </Text>
           </View>
+          <ListMenu menus={menus} />
         </View>
       </View>
     );

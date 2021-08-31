@@ -3,14 +3,20 @@ import {StyleSheet, Image, TouchableOpacity, View, Text} from 'react-native';
 import {colors, fonts, responsiveWidth} from '../../../util';
 import Button from '../Button/Button';
 
-const CardJersey = ({jersey}) => {
+const CardJersey = ({jersey, navigation}) => {
+  console.log('cardLs', navigation);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.card}>
         <Image source={jersey.gambar[0]} style={styles.gambar} />
         <Text style={styles.text}>{jersey.nama}</Text>
       </TouchableOpacity>
-      <Button type="text" title="Detail" padding={7} />
+      <Button
+        type="text"
+        title="Detail"
+        padding={7}
+        onPress={() => navigation.navigate('JerseyDetail', {jersey})}
+      />
     </View>
   );
 };

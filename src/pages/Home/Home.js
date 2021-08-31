@@ -21,10 +21,12 @@ export default class Home extends Component {
     };
   }
   render() {
+    console.log('Home', this.props);
+    const {navigation} = this.props;
     return (
       <View style={styles.page}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <HeaderComponent />
+          <HeaderComponent {...this.props} />
           <BannerSlider />
           <View style={styles.pilihLiga}>
             <Text style={styles.label}>Pilih Liga</Text>
@@ -34,7 +36,7 @@ export default class Home extends Component {
             <Text style={styles.label}>
               Pilih <Text style={styles.bolds}>Jersey</Text> Yang anda Inginkan
             </Text>
-            <ListJerseys jerseys={this.state.jerseys} />
+            <ListJerseys jerseys={this.state.jerseys} navigation={navigation} />
             <Button title="Lihat Semua" type="text" padding={10} />
           </View>
           <Jarak height={15} />

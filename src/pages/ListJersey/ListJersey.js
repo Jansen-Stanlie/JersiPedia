@@ -14,6 +14,7 @@ export default class ListJersey extends Component {
     };
   }
   render() {
+    const {navigation} = this.props;
     return (
       <View style={styles.page}>
         <HeaderComponent />
@@ -27,7 +28,7 @@ export default class ListJersey extends Component {
             <Text style={styles.label}>
               Pilih <Text style={styles.bolds}>Jersey</Text> Yang anda Inginkan
             </Text>
-            <ListJerseys jerseys={this.state.jerseys} />
+            <ListJerseys jerseys={this.state.jerseys} navigation={navigation} />
           </View>
         </ScrollView>
       </View>
