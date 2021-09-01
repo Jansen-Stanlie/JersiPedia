@@ -13,7 +13,7 @@ import IconSignOut from './Sign-out.svg';
 import IconHistory from './jerseyP.svg';
 import IconBack from './arrow-left.svg';
 import IconKeranjangPutih from './cart-putih.svg';
-
+import IconHapus from './Hapus.svg';
 export {
   IconHome,
   IconHomeAktif,
@@ -30,4 +30,5 @@ export {
   IconSignOut,
   IconBack,
   IconKeranjangPutih,
+  IconHapus,
 };

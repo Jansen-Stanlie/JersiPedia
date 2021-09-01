@@ -17,7 +17,7 @@ export default class ListJersey extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.page}>
-        <HeaderComponent />
+        <HeaderComponent navigation={navigation} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={styles.container}>

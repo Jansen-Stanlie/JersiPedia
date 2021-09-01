@@ -21,7 +21,12 @@ class HeaderComponent extends Component {
             <TextInput placeholder="Cari Jersey...." style={styles.input} />
           </View>
           <Jarak width={10} />
-          <Button icon="keranjang" totalkeranjang={2} padding={10} />
+          <Button
+            icon="keranjang"
+            totalkeranjang={2}
+            padding={10}
+            onPress={() => this.props.navigation.navigate('Keranjang')}
+          />
         </View>
       </View>
     );

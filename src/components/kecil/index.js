@@ -5,4 +5,16 @@ import CardMenu from './CardMenu/CardMenu';
 import CardJersey from './CardJersey/CardJersey';
 import Pilihan from './Pilihan/Pilihan';
 import Inputan from './Inputan/Inputan';
-export {Button, Jarak, CardLiga, CardJersey, CardMenu, Pilihan, Inputan};
+import CardKeranjang from './CardKeranjang/CardKeranjang';
+import CardAlamat from './CardAlamat/CardAlamat';
+export {
+  Button,
+  Jarak,
+  CardLiga,
+  CardJersey,
+  CardMenu,
+  Pilihan,
+  Inputan,
+  CardKeranjang,
+  CardAlamat,
+};

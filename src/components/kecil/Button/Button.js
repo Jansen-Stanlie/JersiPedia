@@ -10,7 +10,7 @@ const Button = props => {
   console.log('Padding', padding);
   const Icon = () => {
     if (icon === 'keranjang') {
-      return <IconCart />;
+      return <IconCart onPress={onPress} />;
     }
     return <IconBack onPress={onPress} />;
   };

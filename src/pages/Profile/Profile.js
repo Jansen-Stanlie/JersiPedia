@@ -28,7 +28,7 @@ export default class Profile extends Component {
               {profile.alamat}, {profile.kota}
             </Text>
           </View>
-          <ListMenu menus={menus} />
+          <ListMenu menus={menus} {...this.props} />
         </View>
       </View>
     );

@@ -5,7 +5,7 @@ import ListLiga from './ListLiga/ListLiga';
 import ListJerseys from './ListJersey/ListJerseys';
 import ListMenu from './ListMenu/ListMenu';
 import JerseySlider from './JerseySlider/JerseySlider';
-
+import ListKeranjang from './ListKeranjang/ListKeranjang';
 export {
   BottomNavigator,
   HeaderComponent,
@@ -14,4 +14,5 @@ export {
   ListJerseys,
   ListMenu,
   JerseySlider,
+  ListKeranjang,
 };

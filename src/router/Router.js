@@ -1,8 +1,17 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Splash, ListJersey, Profile, JerseyDetail} from '../pages/pages';
+import {
+  Home,
+  Splash,
+  ListJersey,
+  Profile,
+  JerseyDetail,
+  Keranjang,
+  Checkout,
+} from '../pages/pages';
 import {BottomNavigator} from '../components';
+import EditProfile from '../pages/EditProfile/EditProfile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -41,6 +50,13 @@ const Router = () => {
         name="JerseyDetail"
         component={JerseyDetail}
         options={{headerShown: false}}
+      />
+      <Stack.Screen name="Keranjang" component={Keranjang} />
+      <Stack.Screen name="Checkout" component={Checkout} />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{title: 'Edit Profile'}}
       />
     </Stack.Navigator>
   );
