@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
+import {connect} from 'react-redux';
+import {getUser} from '../../actions/UserAction';
 import {
   BannerSlider,
   HeaderComponent,
@@ -12,7 +14,7 @@ import {dummyLigas} from '../../Data';
 import {dummyJerseys} from '../../Data/DummyJersey/DummyJersey';
 import {colors, fonts} from '../../util';
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +22,12 @@ export default class Home extends Component {
       jerseys: dummyJerseys,
     };
   }
+  componentDidMount() {
+    this.props.getUser();
+  }
   render() {
-    console.log('Home', this.props);
+    console.log('Data USer', this.props.dataUSer);
+
     const {navigation} = this.props;
     return (
       <View style={styles.page}>
@@ -29,7 +35,9 @@ export default class Home extends Component {
           <HeaderComponent {...this.props} />
           <BannerSlider />
           <View style={styles.pilihLiga}>
-            <Text style={styles.label}>Pilih Liga</Text>
+            <Text style={styles.label}>
+              Pilih Liga{this.props.dataUSer.nama}
+            </Text>
             <ListLiga ligas={this.state.ligas} />
           </View>
           <View style={styles.pilihJersey}>
@@ -45,6 +53,11 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStatetoProps = state => ({
+  dataUSer: state.UserReducer.dataUser,
+});
+export default connect(mapStatetoProps, {getUser})(Home);
 
 const styles = StyleSheet.create({
   page: {

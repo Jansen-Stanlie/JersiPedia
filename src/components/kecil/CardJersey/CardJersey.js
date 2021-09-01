@@ -4,7 +4,6 @@ import {colors, fonts, responsiveWidth} from '../../../util';
 import Button from '../Button/Button';
 
 const CardJersey = ({jersey, navigation}) => {
-  console.log('cardLs', navigation);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.card}>

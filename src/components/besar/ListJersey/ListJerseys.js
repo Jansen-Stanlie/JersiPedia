@@ -3,8 +3,6 @@ import {StyleSheet, Text, View} from 'react-native';
 import CardJersey from '../../kecil/CardJersey/CardJersey';
 
 const ListJerseys = ({jerseys, navigation}) => {
-  const a = navigation;
-  console.log('navList', a);
   return (
     <View style={styles.container}>
       {jerseys.map(jersey => {

@@ -7,7 +7,7 @@ import TextOnly from './TextOnly';
 
 const Button = props => {
   const {icon, totalkeranjang, padding, type, onPress, title, fontSize} = props;
-  console.log('type', type);
+
   const Icon = () => {
     if (icon === 'keranjang') {
       return <IconCart onPress={onPress} />;

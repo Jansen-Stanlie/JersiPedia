@@ -11,7 +11,6 @@ class HeaderComponent extends Component {
     this.state = {};
   }
   render() {
-    console.log('Header', this.props);
     return (
       <View style={styles.container}>
         <View style={styles.wrapperHeader}>
