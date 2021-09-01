@@ -5,6 +5,7 @@ import {
   Button,
   CardLiga,
   Inputan,
+  Jarak,
   JerseySlider,
   Pilihan,
 } from '../../components';
@@ -69,7 +70,8 @@ export default class JerseyDetail extends Component {
                 label="Pilih Ukuran"
                 width={responsiveWidth(150)}
                 height={responsiveHeight(30)}
-                fontsize={13}
+                fontsize={12}
+                datas={this.state.jersey.ukuran}
               />
             </View>
 
@@ -78,6 +80,14 @@ export default class JerseyDetail extends Component {
               textarea
               fontsize={15}
               placeholder="Isi Jika Ingin Menambahkan Keterangan Pada Baju"
+            />
+            <Jarak height={15} />
+            <Button
+              title="Masukkan Keranjang"
+              type="textIcon"
+              icon="keranjang-putih"
+              padding={responsiveHeight(17)}
+              fontSize={18}
             />
           </View>
         </View>

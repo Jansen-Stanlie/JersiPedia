@@ -10,7 +10,8 @@ const Inputan = props => {
         <Text style={styles.label(fontsize)}>{label} : </Text>
         <TextInput
           multiline={true}
-          numberOfLine={10}
+          numberOfLines={5.5}
+          placeholder={placeholder}
           style={styles.inputTextArea(fontsize)}
         />
       </View>
@@ -28,7 +29,7 @@ export default Inputan;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
+    marginTop: 10,
   },
   label: fontsize => ({
     fontSize: fontsize ? fontsize : 18,
