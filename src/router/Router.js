@@ -9,11 +9,14 @@ import {
   JerseyDetail,
   Keranjang,
   Checkout,
+  Login,
 } from '../pages/pages';
 import {BottomNavigator} from '../components';
 import EditProfile from '../pages/EditProfile/EditProfile';
 import ChangePassword from '../pages/ChangePassword/ChangePassword';
 import History from '../pages/History/History';
+import Register1 from '../pages/Register/Register1';
+import Register2 from '../pages/Register/Register2';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,6 +72,21 @@ const Router = () => {
         name="History"
         component={History}
         options={{title: 'History Pemesanan'}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Register1"
+        component={Register1}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Register2"
+        component={Register2}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
