@@ -3,7 +3,17 @@ import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {colors, fonts} from '../../../util';
 
 const Inputan = props => {
-  const {textarea, width, height, fontsize, placeholder, label, value} = props;
+  const {
+    textarea,
+    width,
+    height,
+    fontsize,
+    placeholder,
+    label,
+    value,
+    secureTextEntry,
+    keyboardType,
+  } = props;
   if (textarea) {
     return (
       <View style={styles.container}>
@@ -21,7 +31,12 @@ const Inputan = props => {
   return (
     <View style={styles.container}>
       <Text style={styles.label(fontsize)}>{label} : </Text>
-      <TextInput style={styles.input(width, height, fontsize)} value={value} />
+      <TextInput
+        style={styles.input(width, height, fontsize)}
+        value={value}
+        secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
+      />
     </View>
   );
 };

@@ -14,6 +14,7 @@ import IconHistory from './jerseyP.svg';
 import IconBack from './arrow-left.svg';
 import IconKeranjangPutih from './cart-putih.svg';
 import IconHapus from './Hapus.svg';
+import IconSubmit from './Submit.svg';
 export {
   IconHome,
   IconHomeAktif,
@@ -31,4 +32,5 @@ export {
   IconBack,
   IconKeranjangPutih,
   IconHapus,
+  IconSubmit,
 };

@@ -12,6 +12,8 @@ import {
 } from '../pages/pages';
 import {BottomNavigator} from '../components';
 import EditProfile from '../pages/EditProfile/EditProfile';
+import ChangePassword from '../pages/ChangePassword/ChangePassword';
+import History from '../pages/History/History';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -57,6 +59,16 @@ const Router = () => {
         name="EditProfile"
         component={EditProfile}
         options={{title: 'Edit Profile'}}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={ChangePassword}
+        options={{title: 'Change Password'}}
+      />
+      <Stack.Screen
+        name="History"
+        component={History}
+        options={{title: 'History Pemesanan'}}
       />
     </Stack.Navigator>
   );

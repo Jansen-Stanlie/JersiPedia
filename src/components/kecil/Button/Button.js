@@ -1,18 +1,23 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {IconBack, IconCart} from '../../../assets';
+import {IconCart, IconSubmit, IconBack} from '../../../assets';
 import {colors} from '../../../util';
 import TextIcon from './TextIcon';
 import TextOnly from './TextOnly';
 
 const Button = props => {
   const {icon, totalkeranjang, padding, type, onPress, title, fontSize} = props;
-  console.log('Padding', padding);
+  console.log('type', type);
   const Icon = () => {
     if (icon === 'keranjang') {
       return <IconCart onPress={onPress} />;
+    } else if (icon === 'arrow-left') {
+      return <IconBack onPress={onPress} />;
+    } else if (icon === 'submit') {
+      return <IconSubmit />;
     }
-    return <IconBack onPress={onPress} />;
+
+    return <IconCart onPress={onPress} />;
   };
   if (type === 'text') {
     return <TextOnly {...props} />;

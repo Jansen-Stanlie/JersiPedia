@@ -6,6 +6,8 @@ import ListJerseys from './ListJersey/ListJerseys';
 import ListMenu from './ListMenu/ListMenu';
 import JerseySlider from './JerseySlider/JerseySlider';
 import ListKeranjang from './ListKeranjang/ListKeranjang';
+import ListHistory from './ListHistory/ListHistory';
+
 export {
   BottomNavigator,
   HeaderComponent,
@@ -15,4 +17,5 @@ export {
   ListMenu,
   JerseySlider,
   ListKeranjang,
+  ListHistory,
 };

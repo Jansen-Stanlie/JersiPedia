@@ -61,7 +61,7 @@ export default class Checkout extends Component {
             type="textIcon"
             fontSize={18}
             padding={responsiveHeight(15)}
-            icon="keranjang-putih"
+            icon="submit"
             onPress={() => this.props.navigation.navigate('Checkout')}
           />
         </View>

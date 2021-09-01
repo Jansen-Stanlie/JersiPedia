@@ -1,18 +1,29 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {IconBack, IconKeranjangPutih} from '../../../assets';
+import {
+  IconCart,
+  IconSubmit,
+  IconBack,
+  IconKeranjangPutih,
+} from '../../../assets';
 import {colors, fonts} from '../../../util';
 import Jarak from '../Jarak/Jarak';
 import TextOnly from './TextOnly';
 
 const TextIcon = props => {
   const {icon, padding, onPress} = props;
-  console.log('Padding', padding);
+  console.log('Icon', icon);
   const Icon = () => {
-    if (icon === 'keranjang-putih') {
+    if (icon === 'keranjang') {
+      return <IconCart />;
+    } else if (icon === 'arrow-left') {
+      return <IconBack />;
+    } else if (icon === 'keranjang-putih') {
       return <IconKeranjangPutih />;
+    } else if (icon === 'submit') {
+      return <IconSubmit />;
     }
-    return <IconBack onPress={onPress} />;
+    return <IconCart />;
   };
   console.log('font', props.fontSize);
   return (
