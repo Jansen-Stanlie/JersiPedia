@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {IconBack, IconCart} from '../../../assets/icons/icons';
+import {IconBack, IconCart} from '../../../assets';
 import {colors} from '../../../util';
 import TextOnly from './TextOnly';
 
@@ -11,7 +11,7 @@ const Button = props => {
     if (icon === 'keranjang') {
       return <IconCart />;
     }
-    return <IconBack />;
+    return <IconBack onPress={onPress} />;
   };
   if (type === 'text') {
     return <TextOnly {...props} onPress={onPress} />;

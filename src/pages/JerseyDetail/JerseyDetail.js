@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {Button, CardLiga} from '../../components';
+import {
+  Button,
+  CardLiga,
+  Inputan,
+  JerseySlider,
+  Pilihan,
+} from '../../components';
 import {
   colors,
   fonts,
   heightMobileUII,
   numberWithCommas,
   responsiveHeight,
+  responsiveWidth,
 } from '../../util';
 
 export default class JerseyDetail extends Component {
@@ -32,7 +39,7 @@ export default class JerseyDetail extends Component {
             onPress={() => navigation.goBack()}
           />
         </View>
-
+        <JerseySlider images={this.state.gambar} />
         <View style={styles.container}>
           <View style={styles.liga}>
             <CardLiga liga={this.state.jersey.liga} />
@@ -51,6 +58,27 @@ export default class JerseyDetail extends Component {
                 Berat : {this.state.jersey.berat}
               </Text>
             </View>
+            <View style={styles.wrapperInput}>
+              <Inputan
+                label="Jumlah"
+                width={responsiveWidth(150)}
+                height={responsiveHeight(30)}
+                fontsize={13}
+              />
+              <Pilihan
+                label="Pilih Ukuran"
+                width={responsiveWidth(150)}
+                height={responsiveHeight(30)}
+                fontsize={13}
+              />
+            </View>
+
+            <Inputan
+              label="Keterangan"
+              textarea
+              fontsize={15}
+              placeholder="Isi Jika Ingin Menambahkan Keterangan Pada Baju"
+            />
           </View>
         </View>
       </View>
@@ -76,6 +104,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop: 30,
     marginLeft: 30,
+    zIndex: 1,
   },
   nama: {
     fontFamily: fonts.primary.bold,
@@ -100,10 +129,15 @@ const styles = StyleSheet.create({
   },
   wrapperJenisBerat: {
     flexDirection: 'row',
+    marginBottom: 5,
   },
   jenisBerat: {
     fontFamily: fonts.primary.regular,
     fontSize: 13,
     marginRight: 30,
+  },
+  wrapperInput: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

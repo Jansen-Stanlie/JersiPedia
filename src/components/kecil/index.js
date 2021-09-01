@@ -3,4 +3,6 @@ import Jarak from './Jarak/Jarak';
 import CardLiga from './CardLiga/CardLiga';
 import CardMenu from './CardMenu/CardMenu';
 import CardJersey from './CardJersey/CardJersey';
-export {Button, Jarak, CardLiga, CardJersey, CardMenu};
+import Pilihan from './Pilihan/Pilihan';
+import Inputan from './Inputan/Inputan';
+export {Button, Jarak, CardLiga, CardJersey, CardMenu, Pilihan, Inputan};
