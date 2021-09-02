@@ -13,7 +13,9 @@ const Inputan = props => {
     value,
     secureTextEntry,
     keyboardType,
+    onChangeText,
   } = props;
+  console.log(onChangeText);
   if (textarea) {
     return (
       <View style={styles.container}>
@@ -23,7 +25,7 @@ const Inputan = props => {
           numberOfLines={5.5}
           placeholder={placeholder}
           style={styles.inputTextArea(fontsize)}
-          value={value}
+          onChangeText={onChangeText}
         />
       </View>
     );
@@ -36,6 +38,7 @@ const Inputan = props => {
         value={value}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
+        onChangeText={onChangeText}
       />
     </View>
   );

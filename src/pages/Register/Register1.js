@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, {Component} from 'react';
 import {
   Text,
@@ -12,9 +13,41 @@ import {
 import {colors, fonts, responsiveWidth} from '../../util';
 import {IlustrasiRegister1} from '../../assets';
 import {Inputan, Jarak, Button} from '../../components';
+import SweetAlert from 'react-native-sweet-alert';
+class Register1 extends Component {
+  constructor(props) {
+    super(props);
 
-export default class Register1 extends Component {
+    this.state = {
+      nama: '',
+      email: '',
+      nohp: '',
+      password: '',
+    };
+  }
+  onRegister = () => {
+    const {nama, email, nohp, password} = this.state;
+    console.log('nama', nama);
+    if (nama === '' || email === '' || nohp === '' || password === '') {
+      return SweetAlert.showAlertWithOptions(
+        {
+          title: 'Error',
+          subTitle: 'Please fill the blank input',
+          confirmButtonTitle: 'OK',
+          confirmButtonColor: '#000',
+          otherButtonTitle: 'Cancel',
+          otherButtonColor: '#dedede',
+          style: 'error',
+          cancellable: true,
+        },
+        callback => console.log('callback'),
+      );
+    } else {
+      return this.props.navigation.navigate('Register2', this.state);
+    }
+  };
   render() {
+    const {nama, email, nohp, password} = this.state;
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -42,10 +75,28 @@ export default class Register1 extends Component {
             </View>
 
             <View style={styles.card}>
-              <Inputan label="Nama" />
-              <Inputan label="Email" />
-              <Inputan label="No. Handphone" keyboardType="number-pad" />
-              <Inputan label="Password" secureTextEntry />
+              <Inputan
+                label="Nama"
+                // value={nama}
+                onChangeText={nama => this.setState({nama})}
+              />
+              <Inputan
+                label="Email"
+                // value={email}
+                onChangeText={email => this.setState({email: email})}
+              />
+              <Inputan
+                label="No. Handphone"
+                keyboardType="number-pad"
+                // value={nohp}
+                onChangeText={nohp => this.setState({nohp})}
+              />
+              <Inputan
+                label="Password"
+                secureTextEntry
+                // value={password}
+                onChangeText={password => this.setState({password})}
+              />
               <Jarak height={25} />
               <Button
                 title="Continue"
@@ -53,7 +104,7 @@ export default class Register1 extends Component {
                 icon="submit"
                 padding={10}
                 fontSize={18}
-                onPress={() => this.props.navigation.navigate('Register2')}
+                onPress={this.onRegister}
               />
             </View>
           </ScrollView>
@@ -62,7 +113,7 @@ export default class Register1 extends Component {
     );
   }
 }
-
+export default Register1;
 const styles = StyleSheet.create({
   page: {
     flex: 1,

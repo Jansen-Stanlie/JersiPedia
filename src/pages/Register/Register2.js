@@ -14,7 +14,7 @@ import {IlustrasiRegister2} from '../../assets';
 import {Inputan, Jarak, Pilihan, Button} from '../../components';
 import {connect} from 'react-redux';
 import {getKotaList, getProvinsiList} from '../../actions/RajaOngkirAction';
-
+import SweetAlert from 'react-native-sweet-alert';
 class Register2 extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class Register2 extends Component {
       kota: '',
       provinsi: '',
       dataProvinsi: this.props.dataProvinsi,
-      dataKota: this.props.dataKota,
+      alamat: '',
     };
   }
   componentDidMount() {
@@ -36,8 +36,38 @@ class Register2 extends Component {
     });
     this.props.dispatch(getKotaList(provinsi_id));
   };
+  onRegister = () => {
+    const {kota, provinsi, alamat} = this.state;
+    if (kota === '' || provinsi === '' || alamat === '') {
+      return SweetAlert.showAlertWithOptions(
+        {
+          title: 'Error',
+          subTitle: 'Please fill the blank input',
+          confirmButtonTitle: 'OK',
+          confirmButtonColor: '#000',
+          otherButtonTitle: 'Cancel',
+          otherButtonColor: '#dedede',
+          style: 'error',
+          cancellable: true,
+        },
+        callback => console.log('callback'),
+      );
+    } else {
+      const data = {
+        nama: this.props.route.params.nama,
+        email: this.props.route.params.email,
+        nohp: this.props.route.params.nohp,
+        alamat: alamat,
+        kota: kota,
+        provinsi: provinsi,
+        status: 'user',
+      };
+      console.log('datass', data);
+      return this.props.navigation.navigate('MainApp');
+    }
+  };
   render() {
-    const {dataKota, dataProvinsi, kota, provinsi} = this.state;
+    const {dataProvinsi, kota, provinsi, alamat} = this.state;
     console.log('dataKota', this.props.dataKota);
     return (
       <KeyboardAvoidingView
@@ -66,7 +96,11 @@ class Register2 extends Component {
             </View>
 
             <View style={styles.card}>
-              <Inputan label="Alamat" textarea />
+              <Inputan
+                label="Alamat"
+                textarea
+                onChangeText={() => this.setState({alamat})}
+              />
 
               <Pilihan
                 label="Provinsi"
@@ -91,7 +125,7 @@ class Register2 extends Component {
                 icon="submit"
                 padding={10}
                 fontSize={18}
-                onPress={() => this.props.navigation.navigate('MainApp')}
+                onPress={this.onRegister}
               />
             </View>
           </ScrollView>
