@@ -1,9 +1,11 @@
 import React from 'react';
 import {StyleSheet, Image, TouchableOpacity, View, Text} from 'react-native';
+import {connect} from 'react-redux';
 import {colors, fonts, responsiveWidth} from '../../../util';
 import Button from '../Button/Button';
 
-const CardJersey = ({jersey, navigation}) => {
+const CardJersey = ({jersey, navigation, dataUser}) => {
+  console.log(dataUser);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.card}>
@@ -20,7 +22,11 @@ const CardJersey = ({jersey, navigation}) => {
   );
 };
 
-export default CardJersey;
+const mapStatetoProps = state => ({
+  dataUser: state.UserReducer.dataUser,
+});
+
+export default connect(mapStatetoProps, null)(CardJersey);
 
 const styles = StyleSheet.create({
   gambar: {

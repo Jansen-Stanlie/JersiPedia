@@ -22,22 +22,17 @@ class Home extends Component {
       jerseys: dummyJerseys,
     };
   }
-  componentDidMount() {
-    this.props.getUser();
-  }
-  render() {
-    console.log('Data USer', this.props.dataUSer);
 
+  render() {
     const {navigation} = this.props;
+    console.log('Data', this.props.dataUSer);
     return (
       <View style={styles.page}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <HeaderComponent {...this.props} />
           <BannerSlider />
           <View style={styles.pilihLiga}>
-            <Text style={styles.label}>
-              Pilih Liga{this.props.dataUSer.nama}
-            </Text>
+            <Text style={styles.label}>Pilih Liga</Text>
             <ListLiga ligas={this.state.ligas} />
           </View>
           <View style={styles.pilihJersey}>
@@ -57,7 +52,7 @@ class Home extends Component {
 const mapStatetoProps = state => ({
   dataUSer: state.UserReducer.dataUser,
 });
-export default connect(mapStatetoProps, {getUser})(Home);
+export default connect(mapStatetoProps, null)(Home);
 
 const styles = StyleSheet.create({
   page: {

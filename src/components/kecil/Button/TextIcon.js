@@ -8,11 +8,10 @@ import {
 } from '../../../assets';
 import {colors, fonts} from '../../../util';
 import Jarak from '../Jarak/Jarak';
-import TextOnly from './TextOnly';
 
 const TextIcon = props => {
   const {icon, padding, onPress} = props;
-  console.log('Icon', icon);
+
   const Icon = () => {
     if (icon === 'keranjang') {
       return <IconCart />;
@@ -25,7 +24,7 @@ const TextIcon = props => {
     }
     return <IconCart />;
   };
-  console.log('font', props.fontSize);
+
   return (
     <TouchableOpacity style={styles.container(padding)} onPress={onPress}>
       <Icon />

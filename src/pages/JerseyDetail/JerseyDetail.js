@@ -28,8 +28,6 @@ export default class JerseyDetail extends Component {
     };
   }
   render() {
-    console.log('JD', this.props);
-    console.log('Gambar', this.state.jersey.liga);
     const {navigation} = this.props;
     return (
       <View style={styles.page}>

@@ -12,19 +12,27 @@ import {
 import {colors, fonts, responsiveWidth} from '../../util';
 import {IlustrasiRegister2} from '../../assets';
 import {Inputan, Jarak, Pilihan, Button} from '../../components';
+import {connect} from 'react-redux';
+import {getKotaList, getProvinsiList} from '../../actions/RajaOngkirAction';
 
-export default class Register2 extends Component {
+class Register2 extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dataProvinsi: [],
-      dataKota: [],
+      kota: '',
+      provinsi: '',
+      dataProvinsi: this.props.dataProvinsi,
+      dataKota: this.props.dataKota,
     };
   }
-
+  componentDidMount() {
+    this.props.dispatch(getProvinsiList());
+    this.props.dispatch(getKotaList(2));
+  }
   render() {
-    const {dataKota, dataProvinsi} = this.state;
+    const {dataKota, dataProvinsi, kota, provinsi} = this.state;
+    console.log('dataKota', dataKota);
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -54,8 +62,16 @@ export default class Register2 extends Component {
             <View style={styles.card}>
               <Inputan label="Alamat" textarea />
 
-              <Pilihan label="Provinsi" datas={dataProvinsi} />
-              <Pilihan label="Kota/Kab" datas={dataKota} />
+              <Pilihan
+                label="Provinsi"
+                datas={dataProvinsi ? dataProvinsi : []}
+                selectedValue={provinsi}
+              />
+              <Pilihan
+                label="Kota/Kab"
+                datas={dataKota ? dataKota : []}
+                selectedValue={kota}
+              />
               <Jarak height={25} />
               <Button
                 title="Continue"
@@ -72,7 +88,11 @@ export default class Register2 extends Component {
     );
   }
 }
-
+const mapStatetoProps = state => ({
+  dataProvinsi: state.RajaOngkirReducer.getProvinsiResult,
+  dataKota: state.RajaOngkirReducer.getKotaResult,
+});
+export default connect(mapStatetoProps, null)(Register2);
 const styles = StyleSheet.create({
   page: {
     flex: 1,

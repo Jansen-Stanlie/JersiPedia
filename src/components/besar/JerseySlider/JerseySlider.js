@@ -26,7 +26,6 @@ export default class JerseySlider extends Component {
     });
   };
   render() {
-    console.log(this.props.images);
     return (
       <View>
         <SliderBox

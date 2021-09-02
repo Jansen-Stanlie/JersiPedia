@@ -3,9 +3,15 @@ import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts, responsiveHeight} from '../../../util';
 import {Picker} from '@react-native-picker/picker';
 
-const Pilihan = ({label, datas, width, height, fontsize}) => {
-  const [selectedValue, setSelectedValue] = useState('');
-
+const Pilihan = ({
+  label,
+  datas,
+  width,
+  height,
+  fontsize,
+  selectedValue,
+  onValueChange,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label(fontsize)}>{label} :</Text>
@@ -13,10 +19,28 @@ const Pilihan = ({label, datas, width, height, fontsize}) => {
         <Picker
           selectedValue={selectedValue}
           style={styles.picker(width, height, fontsize)}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+          onValueChange={onValueChange}>
           <Picker.Item label="--Pilih--" value="" />
           {datas.map((item, index) => {
-            return <Picker.Item label={item} value={item} key={index} />;
+            if (label === 'Provinsi') {
+              return (
+                <Picker.Item
+                  label={item.province}
+                  value={item.province_id}
+                  key={index}
+                />
+              );
+            } else if (label === 'Kota/Kab') {
+              return (
+                <Picker.Item
+                  label={item.city_name}
+                  value={item.city_id}
+                  key={index}
+                />
+              );
+            } else {
+              return <Picker.Item label={item} value={item} key={index} />;
+            }
           })}
         </Picker>
       </View>
