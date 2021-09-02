@@ -30,10 +30,10 @@ const Pilihan = ({
                   key={index}
                 />
               );
-            } else if (label === 'Kota/Kab') {
+            } else if (label === 'Kota') {
               return (
                 <Picker.Item
-                  label={item.city_name}
+                  label={item.type + ' ' + item.city_name}
                   value={item.city_id}
                   key={index}
                 />

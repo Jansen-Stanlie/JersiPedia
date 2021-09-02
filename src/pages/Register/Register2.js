@@ -28,11 +28,17 @@ class Register2 extends Component {
   }
   componentDidMount() {
     this.props.dispatch(getProvinsiList());
-    this.props.dispatch(getKotaList(2));
   }
+  ubahProvinsi = provinsi_id => {
+    console.log('proc id', provinsi_id);
+    this.setState({
+      provinsi: provinsi_id,
+    });
+    this.props.dispatch(getKotaList(provinsi_id));
+  };
   render() {
     const {dataKota, dataProvinsi, kota, provinsi} = this.state;
-    console.log('dataKota', dataKota);
+    console.log('dataKota', this.props.dataKota);
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -66,11 +72,17 @@ class Register2 extends Component {
                 label="Provinsi"
                 datas={dataProvinsi ? dataProvinsi : []}
                 selectedValue={provinsi}
+                onValueChange={provinsi_id => this.ubahProvinsi(provinsi_id)}
               />
               <Pilihan
-                label="Kota/Kab"
-                datas={dataKota ? dataKota : []}
+                label="Kota"
+                datas={this.props.dataKota ? this.props.dataKota : []}
                 selectedValue={kota}
+                onValueChange={kotas =>
+                  this.setState({
+                    kota: kotas,
+                  })
+                }
               />
               <Jarak height={25} />
               <Button
