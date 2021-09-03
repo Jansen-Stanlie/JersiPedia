@@ -15,6 +15,7 @@ import {Inputan, Jarak, Pilihan, Button} from '../../components';
 import {connect} from 'react-redux';
 import {getKotaList, getProvinsiList} from '../../actions/RajaOngkirAction';
 import SweetAlert from 'react-native-sweet-alert';
+import {registerUser} from '../../actions/AuthAction';
 class Register2 extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +39,9 @@ class Register2 extends Component {
   };
   onRegister = () => {
     const {kota, provinsi, alamat} = this.state;
+    console.log('kota', kota);
+    console.log('kotas', provinsi);
+    console.log('kotass', alamat);
     if (kota === '' || provinsi === '' || alamat === '') {
       return SweetAlert.showAlertWithOptions(
         {
@@ -63,6 +67,7 @@ class Register2 extends Component {
         status: 'user',
       };
       console.log('datass', data);
+      this.props.dispatch(registerUser(data));
       return this.props.navigation.navigate('MainApp');
     }
   };
@@ -99,7 +104,7 @@ class Register2 extends Component {
               <Inputan
                 label="Alamat"
                 textarea
-                onChangeText={() => this.setState({alamat})}
+                onChangeText={alamat => this.setState({alamat: alamat})}
               />
 
               <Pilihan
