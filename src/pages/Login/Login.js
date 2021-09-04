@@ -3,8 +3,45 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Ilustrasi, Logo} from '../../assets';
 import {Inputan, Jarak, Button} from '../../components';
 import {colors, fonts, responsiveHeight} from '../../util';
+import SweetAlert from 'react-native-sweet-alert';
+import {loginUser} from '../../actions/AuthAction';
+import {connect} from 'react-redux';
+class Login extends Component {
+  constructor(props) {
+    super(props);
 
-export default class Login extends Component {
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+  onLogin = () => {
+    const {email, password} = this.state;
+    if (email === '' || password === '') {
+      return SweetAlert.showAlertWithOptions(
+        {
+          title: 'Error',
+          subTitle: 'Please fill the blank input',
+          confirmButtonTitle: 'OK',
+          confirmButtonColor: '#000',
+          otherButtonTitle: 'Cancel',
+          otherButtonColor: '#dedede',
+          style: 'error',
+          cancellable: true,
+        },
+        callback => console.log('callback'),
+      );
+    } else {
+      this.props.dispatch(loginUser(email, password));
+    }
+  };
+  componentDidUpdate(prevProps) {
+    const {loginResult} = this.props;
+
+    if (loginResult && prevProps.loginResult !== loginResult) {
+      this.props.navigation.replace('MainApp');
+    }
+  }
   render() {
     return (
       <View style={styles.pages}>
@@ -12,15 +49,31 @@ export default class Login extends Component {
           <Logo />
         </View>
         <View style={styles.cardLogin}>
-          <Inputan label="Email" />
-          <Inputan label="Password" secureTextEntry />
+          <Inputan
+            label="Email"
+            onChangeText={value => {
+              this.setState({
+                email: value,
+              });
+            }}
+          />
+          <Inputan
+            label="Password"
+            secureTextEntry
+            onChangeText={value => {
+              this.setState({
+                password: value,
+              });
+            }}
+          />
           <Jarak height={25} />
           <Button
             title="Login"
             type="text"
             padding={12}
             fontSize={18}
-            onPress={() => this.props.navigation.navigate('MainApp')}
+            loading={this.props.loginLoading}
+            onPress={this.onLogin}
           />
         </View>
 
@@ -40,6 +93,12 @@ export default class Login extends Component {
     );
   }
 }
+const mapStatetoProps = state => ({
+  loginLoading: state.AuthReducer.loginLoading,
+  loginResult: state.AuthReducer.loginResult,
+  loginError: state.AuthReducer.loginError,
+});
+export default connect(mapStatetoProps, null)(Login);
 
 const styles = StyleSheet.create({
   pages: {
