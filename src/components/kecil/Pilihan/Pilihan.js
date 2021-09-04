@@ -34,7 +34,7 @@ const Pilihan = ({
               return (
                 <Picker.Item
                   label={item.type + ' ' + item.city_name}
-                  value={item.city_id}
+                  value={item.city_name}
                   key={index}
                 />
               );

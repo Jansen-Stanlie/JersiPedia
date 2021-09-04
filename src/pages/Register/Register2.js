@@ -24,7 +24,7 @@ class Register2 extends Component {
     this.state = {
       kota: '',
       provinsi: '',
-      dataProvinsi: this.props.dataProvinsi,
+
       alamat: '',
     };
   }
@@ -39,6 +39,7 @@ class Register2 extends Component {
   }
   ubahProvinsi = provinsi_id => {
     console.log('proc id', provinsi_id);
+
     this.setState({
       provinsi: provinsi_id,
     });
@@ -46,9 +47,7 @@ class Register2 extends Component {
   };
   onRegister = () => {
     const {kota, provinsi, alamat} = this.state;
-    console.log('kota', kota);
-    console.log('kotas', provinsi);
-    console.log('kotass', alamat);
+    console.log(provinsi);
     if (kota === '' || provinsi === '' || alamat === '') {
       return SweetAlert.showAlertWithOptions(
         {
@@ -70,7 +69,7 @@ class Register2 extends Component {
         nohp: this.props.route.params.nohp,
         alamat: alamat,
         kota: kota,
-        provinsi: provinsi,
+        provinsi: this.props.dataProvinsi[provinsi - 1].province,
         status: 'user',
       };
       console.log('datass', data);
@@ -80,7 +79,7 @@ class Register2 extends Component {
   };
   render() {
     const {dataProvinsi, kota, provinsi, alamat} = this.state;
-    console.log('dataKota', this.props.dataKota);
+    console.log('dataKota', this.props.dataProvinsi);
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -116,9 +115,14 @@ class Register2 extends Component {
 
               <Pilihan
                 label="Provinsi"
-                datas={dataProvinsi ? dataProvinsi : []}
+                datas={this.props.dataProvinsi ? this.props.dataProvinsi : []}
                 selectedValue={provinsi}
-                onValueChange={provinsi_id => this.ubahProvinsi(provinsi_id)}
+                onValueChange={provinsi_id => {
+                  this.ubahProvinsi(provinsi_id);
+                  console.log(
+                    this.props.dataProvinsi[provinsi_id - 1].province,
+                  );
+                }}
               />
               <Pilihan
                 label="Kota"

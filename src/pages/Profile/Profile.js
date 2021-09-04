@@ -2,28 +2,61 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {ListMenu} from '../../components/besar/index';
-import {dummyMenu, DummyMenu, dummyProfile} from '../../Data';
-import {colors, fonts, responsiveHeight, responsiveWidth} from '../../util';
+import {dummyMenu} from '../../Data';
+import {
+  colors,
+  fonts,
+  responsiveHeight,
+  responsiveWidth,
+  getData,
+} from '../../util';
 import {heightMobileUII} from '../../util/constant/constant';
-
+import {DefaultImage} from '../../assets';
 export default class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      profile: dummyProfile,
+      profile: false,
       menus: dummyMenu,
     };
   }
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      // do something
+      console.log('Pasang ya');
+      this.getUserData();
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
+
+  getUserData = () => {
+    getData('user').then(res => {
+      const data = res;
+      if (data) {
+        this.setState({
+          profile: data,
+        });
+      } else {
+        return this.props.navigation.replace('Login');
+      }
+    });
+  };
   render() {
     const {profile, menus} = this.state;
     return (
       <View style={styles.page}>
         <View style={styles.container}>
           <View style={styles.profile}>
-            <Image source={profile.avatar} style={styles.foto} />
+            <Image
+              source={profile.avatar ? {uri: profile.avatar} : DefaultImage}
+              style={styles.foto}
+            />
             <Text style={styles.nama}>{profile.nama}</Text>
-            <Text style={styles.desc}>No. Hp : {profile.nomorHp}</Text>
+            <Text style={styles.desc}>No. Hp : {profile.nohp}</Text>
             <Text style={styles.desc}>
               {profile.alamat}, {profile.kota}
             </Text>

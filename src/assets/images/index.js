@@ -6,6 +6,7 @@ import FotoProfile from './profile.jpg';
 import Ilustrasi from './ilustrasi.js';
 import IlustrasiRegister1 from './register1.js';
 import IlustrasiRegister2 from './register2.js';
+import DefaultImage from './default-image.jpg';
 
 export {
   Logo,
@@ -16,4 +17,5 @@ export {
   Ilustrasi1,
   IlustrasiRegister1,
   IlustrasiRegister2,
+  DefaultImage,
 };
